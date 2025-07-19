@@ -1,5 +1,6 @@
 import { LitElement, html, css, type TemplateResult } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
+import { enTranslation } from './i18n/locales/en'
 
 @customElement('nord-stepper')
 export class NordStepper extends LitElement {
@@ -12,9 +13,6 @@ export class NordStepper extends LitElement {
    */
   @property({ type: String }) progress: 'bar' | 'steps' | 'both' | 'none' = 'both'
   @property({ type: Number }) totalSteps: number = 3
-  @property({ type: String }) buttonLabelBack: string = 'Back'
-  @property({ type: String }) buttonLabelNext: string = 'Next'
-  @property({ type: String }) buttonLabelFinish: string = 'Finish'
 
   @state() private currentStep: number = 1
 
@@ -81,56 +79,59 @@ export class NordStepper extends LitElement {
     }))
   }
 
-  render = (): TemplateResult => html`
-    <nord-stack gap="l">
-      ${this.progress !== 'none'
-        ? html`
-            <nord-stack
-              direction="horizontal"
-              align-items="center"
-              justify-content="space-between"
-              role="region"
-            >
-              ${['steps', 'both'].includes(this.progress)
-                ? html`<nord-badge class="n-margin-is-s">${this.currentStep}/${this.totalSteps}</nord-badge>`
-                : null}
-              ${['bar', 'both'].includes(this.progress)
-                ? html`<nord-progress-bar .value=${(this.currentStep / this.totalSteps) * 100} class="progress-bar"></nord-progress-bar>`
-                : null}
-            </nord-stack>
-          `
-        : null}
+  render = (): TemplateResult => {
+    const t = enTranslation['nord-stepper']
+    return html`
+      <nord-stack gap="l">
+        ${this.progress !== 'none'
+          ? html`
+              <nord-stack
+                direction="horizontal"
+                align-items="center"
+                justify-content="space-between"
+                role="region"
+              >
+                ${['steps', 'both'].includes(this.progress)
+                  ? html`<nord-badge class="n-margin-is-s">${this.currentStep}/${this.totalSteps}</nord-badge>`
+                  : null}
+                ${['bar', 'both'].includes(this.progress)
+                  ? html`<nord-progress-bar .value=${(this.currentStep / this.totalSteps) * 100} class="progress-bar"></nord-progress-bar>`
+                  : null}
+              </nord-stack>
+            `
+          : null}
 
-      <!-- live region now contains both the step text and the slot content -->
-      <div
-        id="step-container"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <nord-visually-hidden>Step ${this.currentStep} of ${this.totalSteps}</nord-visually-hidden> 
-        <slot name=${`step-${this.currentStep}`}></slot>
-      </div>
+        <div
+          id="step-container"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <nord-visually-hidden>${t.stepXofY(this.currentStep, this.totalSteps)}</nord-visually-hidden> 
+          <slot name=${`step-${this.currentStep}`}></slot>
+        </div>
 
-      <nord-stack justify-content="space-between" direction="horizontal" role="navigation">
-        <nord-button
-          variant="secondary"
-          @click=${this.goBack}
-          ?disabled=${this.currentStep === 1}
-          ?aria-disabled=${this.currentStep === 1}
-        >
-          ${this.buttonLabelBack}
-        </nord-button>
-        <nord-button
-          variant="primary"
-          @click=${this.goNext}
-        >
-          ${this.currentStep === this.totalSteps
-            ? this.buttonLabelFinish
-            : this.buttonLabelNext}
-        </nord-button>
+        <nord-stack justify-content="space-between" direction="horizontal" role="navigation">
+          <nord-button
+            variant="secondary"
+            @click=${this.goBack}
+            ?disabled=${this.currentStep === 1}
+            ?aria-disabled=${this.currentStep === 1}
+          >
+            ${t.back}
+          </nord-button>
+          <nord-button
+            variant="primary"
+            @click=${this.goNext}
+          >
+            ${this.currentStep === this.totalSteps
+              ? `${t.finish}`
+              : `${t.next}`
+            }
+          </nord-button>
+        </nord-stack>
       </nord-stack>
-    </nord-stack>
-  `
+    `
+  }
 }
 
 declare global {
