@@ -1,6 +1,6 @@
 {
   "name": "nord-stepper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -10,6 +10,7 @@
     "@nordhealth/components": "^4.5.0",
     "@nordhealth/css": "^4.1.0",
     "@nordhealth/themes": "^9.0.0",
+    "i18next": "^25.3.2",
     "lit": "^3.2.1"
   },
   "devDependencies": {
