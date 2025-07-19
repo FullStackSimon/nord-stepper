@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>nord-stepper Demo</title>
+    <link rel="stylesheet" href="https://nordcdn.net/ds/css/4.1.0/nord.min.css" crossorigin="anonymous" />
+    <style>
+        .container {
+            width: 50vh;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+    </style>
+    <script type="module" src="/src/index.ts"></script>
+    <script type="module" src="https://nordcdn.net/ds/components/4.4.0/index.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+        <nord-stepper total-steps="3">
+            <div slot="step-1">
+                <h2>Hi NordHealth</h2>
+                <p>You've just found your new Staff Engineer!</p>
+            </div>
+            <div slot="step-2">
+                <h2>Nice to meet you</h2>
+                <p>I look forward to working with you!</p>
+            </div>
+            <div slot="step-3">
+                <h2>Your design system is awesome</h2>
+                <p>Really awesome!</p>
+            </div>
+        </nord-stepper>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+const e={instructions:"Press 'Enter' to confirm your input or 'Escape' to cancel",inputLabel:"Type the name of a command to run.",footerArrowKeys:"Navigate",footerEnterKey:"Select",footerEscapeKey:"Esc to dismiss",footerBackspaceKey:"Move to parent",noResults:e=>`No results for “${e}”`,tip:"Search tips: some search terms require an exact match. Try typing the entire command name, or use a different word or phrase.",placeholder:"Type a command or search…"};export{e as default};
+//# sourceMappingURL=localization.js.map
