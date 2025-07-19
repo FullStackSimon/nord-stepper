@@ -2,17 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>nord-stepper Demo</title>
     <link rel="stylesheet" href="https://nordcdn.net/ds/css/4.1.0/nord.min.css" crossorigin="anonymous" />
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        /* Base (Phones) */
         .container {
-            width: 50vh;
+            width: 95vw;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Tablets */
+        @media (min-width: 600px) {
+            .container {
+                width: 66vw;
+            }
+        }
+
+        /* Desktops */
+        @media (min-width: 1024px) {
+            .container {
+                width: 50vw;
+            }
         }
     </style>
     <script type="module" src="/src/index.ts"></script>
