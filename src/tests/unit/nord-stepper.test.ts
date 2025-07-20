@@ -1,7 +1,7 @@
 import { fixture, html, expect, oneEvent } from '@open-wc/testing'
 import { describe, it } from 'vitest'
-import '../nord-stepper'
-import type { NordStepper } from '../nord-stepper'
+import '../../nord-stepper'
+import type { NordStepper } from '../../nord-stepper'
 
 describe('nord-stepper', () => {
   it('renders default labels and first step', async () => {
