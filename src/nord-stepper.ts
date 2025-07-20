@@ -35,6 +35,7 @@ export class NordStepper extends LitElement {
   `
 
   connectedCallback(): void {
+    this.setAttribute('tabindex', '0')
     super.connectedCallback()
     this.addEventListener('keydown', this.handleKeyDown)
   }
