@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "coverage/block-navigation.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "coverage/prettify.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "coverage/sorter.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/nord-stepper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Stepper component for multi-step flows.",
+          "name": "NordStepper",
+          "cssProperties": [
+            {
+              "description": "Font family used in stepper",
+              "name": "--n-font-family"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The progress bar element",
+              "name": "progress-bar"
+            },
+            {
+              "description": "The step count badge",
+              "name": "badge"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Named slot for each step. Use `slot=\"step-1\"` to `step-N`.",
+              "name": "step-{n}"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "progress",
+              "type": {
+                "text": "'bar' | 'steps' | 'both' | 'none'"
+              },
+              "default": "'both'",
+              "description": "Controls how progress is shown at the top.\n- \"bar\": show only the progress bar\n- \"steps\": show only the step count (e.g. 1/3)\n- \"both\": show both (default)\n- \"none\": hide all progress indicators"
+            },
+            {
+              "kind": "field",
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "description": "Number of total steps in the flow."
+            },
+            {
+              "kind": "field",
+              "name": "currentStep",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; width: 100%; font-family: var(--n-font-family); position: relative; padding: var(--n-space-m); } .progress-bar { width: 3.5rem; } .step ::slotted(*) { font-family: var(--n-font-family, sans-serif); } `"
+            },
+            {
+              "kind": "field",
+              "name": "handleKeyDown",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "goNext",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "goBack",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "emitChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when current step changes. `event.detail = { step: number }`",
+              "name": "step-change"
+            },
+            {
+              "description": "Fired when the final step is reached.",
+              "name": "completed"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "nord-stepper",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NordStepper",
+          "declaration": {
+            "name": "NordStepper",
+            "module": "src/nord-stepper.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/i18n/locales/en.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "enTranslation",
+          "type": {
+            "text": "Translation & NordStepper"
+          },
+          "default": "{ $lang: 'en', $name: 'English', $dir: 'ltr', 'nord-stepper': { back: 'Back', next: 'Next', finish: 'Finish', stepXofY: (current: number, total: number) => `Step ${current} of ${total}`, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "enTranslation",
+          "declaration": {
+            "name": "enTranslation",
+            "module": "src/i18n/locales/en.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/tests/e2e/nord-stepper.spec.ts",
+      "declarations": [],
+      "exports": []
+    }
+  ]
+}
