@@ -2,8 +2,23 @@ import { LitElement, html, css, type TemplateResult } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { enTranslation } from './i18n/locales/en'
 
+/**
+ * Stepper component for multi-step flows.
+ *
+ * @element nord-stepper
+ * @slot step-{n} - Named slot for each step. Use `slot="step-1"` to `step-N`.
+ *
+ * @fires step-change - Fired when current step changes. `event.detail = { step: number }`
+ * @fires completed - Fired when the final step is reached.
+ *
+ * @csspart progress-bar - The progress bar element
+ * @csspart badge - The step count badge
+ *
+ * @cssprop --n-font-family - Font family used in stepper
+ */
 @customElement('nord-stepper')
 export class NordStepper extends LitElement {
+  
   /**
    * Controls how progress is shown at the top.
    * - "bar": show only the progress bar
@@ -12,6 +27,10 @@ export class NordStepper extends LitElement {
    * - "none": hide all progress indicators
    */
   @property({ type: String }) progress: 'bar' | 'steps' | 'both' | 'none' = 'both'
+
+  /**
+   * Number of total steps in the flow.
+   */
   @property({ type: Number }) totalSteps: number = 3
 
   @state() private currentStep: number = 1

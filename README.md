@@ -2,18 +2,20 @@
 
 A lightweight, accessible stepper web component built with [Lit](https://lit.dev), designed to integrate seamlessly with [Nord Design System](https://nordhealth.design/).
 
-This project was created to explore the design philosophy, component patterns, and integration approach of the Nord ecosystem while I apply for the Staff Engineer role with them.
+This project was created to explore the design philosophy, component patterns, and integration approach of the Nord ecosystem while applying for a Staff Engineer role.
 
 ---
 
 ## ✨ Features
 
-- ✅ Progress indicator (`steps`, `bar`, or `both`)
+- ✅ Progress indicator: step count, bar, both, or none
 - ✅ Responsive layout (mobile and desktop)
-- ✅ Customizable back/next button labels
+- ✅ Keyboard navigation (←/→ keys)
 - ✅ Emits `step-change` and `completed` events
 - ✅ Built with web standards using [Lit](https://lit.dev)
-- ✅ Uses [@nordhealth/components](https://nordhealth.design/components) and design tokens
+- ✅ Integrated with [@nordhealth/components](https://nordhealth.design/components)
+- ✅ Accessible (ARIA roles, live regions, visually hidden labels)
+- ✅ Localized text via internal i18n bundle
 
 ---
 
@@ -42,21 +44,28 @@ This project was created to explore the design philosophy, component patterns, a
 
 ## 🎛️ Props
 
-| Property      | Type                                     | Default   | Description                                  |
-|---------------|------------------------------------------|-----------|----------------------------------------------|
-| `totalSteps`  | `number`                                 | `3`       | Number of steps                              |
-| `progress`    | `"steps"`, `"bar"`, `"both"`, `"none"`   | `"both"`  | Controls progress display format             |
-| `backLabel`   | `string`                                 | `"Back"`  | Label for the back button                    |
-| `nextLabel`   | `string`                                 | `"Next"`  | Label for the next/finish button             |
+| Property      | Type                                   | Default   | Description                              |
+|---------------|----------------------------------------|-----------|------------------------------------------|
+| `totalSteps`  | `number`                               | `3`       | Total number of steps                    |
+| `progress`    | `'steps' | 'bar' | 'both' | 'none'` | `'both'`  | Controls progress indicator visibility   |
 
 ---
 
 ## 📡 Events
 
-- `step-change` – Emitted when the current step changes  
-  → `event.detail = { step: number }`
+| Event         | When it fires                             | Payload                      |
+|---------------|--------------------------------------------|------------------------------|
+| `step-change` | When the step is changed (next/back/arrow) | `{ step: number }`           |
+| `completed`   | When the user completes the final step     | none                         |
 
-- `completed` – Emitted when the final step is completed
+---
+
+## ⌨️ Keyboard Support
+
+| Key           | Action              |
+|---------------|---------------------|
+| `ArrowRight`  | Go to next step     |
+| `ArrowLeft`   | Go to previous step |
 
 ---
 
@@ -67,17 +76,21 @@ npm install
 npm run dev
 ```
 
-Uses [Vite](https://vitejs.dev/) for development.
+- Local dev server via [Vite](https://vitejs.dev/)
+- Tests:
+  - Unit: `npm run test:unit`
+  - Coverage: `npm run test:coverage`
+  - E2E: `npx playwright test`
 
 ---
 
 ## 📐 Design Philosophy
 
-This project aligns with [Nordhealth’s design principles](https://nordhealth.design/principles/):
+This component follows [Nordhealth’s design principles](https://nordhealth.design/principles/):
 
 - Clarity and simplicity in UI
-- Consistency via design tokens and components
-- Accessibility and flexibility as first-class goals
+- Accessibility and flexibility by default
+- Component modularity and system consistency
 
 ---
 
@@ -89,13 +102,9 @@ MIT — see [LICENSE](./LICENSE)
 
 ## 🧪 Roadmap
 
-- [ ] Accessibility (keyboard navigation, ARIA)
-- [ ] Unit tests (Vitest)
-- [ ] E2E tests (Playwright)
-- [ ] Localisation support (i18n)
+- ✅ Accessibility (keyboard nav, ARIA)
+- ✅ Unit tests (Vitest)
+- ✅ E2E tests (Playwright)
+- ✅ Localisation support (i18n)
 - [ ] Animations / transitions
 - [ ] Vue/React wrappers
-
----
-
-> Built for learning. Inspired by Nord.
