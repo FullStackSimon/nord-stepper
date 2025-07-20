@@ -42,6 +42,12 @@
     </style>
     <script type="module" src="/src/index.ts"></script>
     <script type="module" src="https://nordcdn.net/ds/components/4.4.0/index.js" crossorigin="anonymous"></script>
+    <script type="module">
+        const stepper = document.querySelector('nord-stepper');
+        stepper?.addEventListener('completed', () => {
+            console.log('stepper:completed')
+        })
+        </script>
   </head>
   <body>
     <div class="container">
