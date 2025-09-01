@@ -1,5 +1,9 @@
 # nord-stepper
+<div align="center">
 
+![Screenshot](./images/nord-stepper.gif)
+
+</div>
 A lightweight, accessible stepper web component built with [Lit](https://lit.dev), designed to integrate seamlessly with [Nord Design System](https://nordhealth.design/).
 
 This project was created to explore the design philosophy, component patterns, and integration approach of the Nord ecosystem while applying for a Staff Engineer role.
